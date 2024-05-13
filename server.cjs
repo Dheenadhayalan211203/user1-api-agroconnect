@@ -41,6 +41,16 @@ const user1scheme = new mongoose.Schema({
     }
   });
 
+  app.get("/api/user1", async (req, res) => {
+    try {
+      const userData = await user1schema.find(); // Retrieve all data from the "user1" collection
+      res.status(200).json(userData);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+  
+
 
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
